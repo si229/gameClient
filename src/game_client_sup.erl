@@ -31,7 +31,16 @@ init([]) ->
         intensity => 0,
         period => 1
     },
-    ChildSpecs = [],
+    ChildSpecs = [
+        #{
+            id => game_client_role_sup,
+            start => {game_client_role_sup, start_link, []},
+            type => worker,
+            restart => permanent,
+            shutdown=>5000,
+            modules => [game_client_role_sup]
+        }
+    ],
     {ok, {SupFlags, ChildSpecs}}.
 
 %% internal functions
