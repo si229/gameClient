@@ -38,6 +38,10 @@ handle_call(enter_room, _From, State = #state{ws_pid = WsPid}) ->
     Msg = game_client_proto:enter_room(),
     send_msg(WsPid, Msg),
     {reply, ok, State};
+handle_call(roads, _From, State = #state{ws_pid = WsPid}) ->
+    Msg = game_client_proto:roads(),
+    send_msg(WsPid, Msg),
+    {reply, ok, State};
 handle_call(bet, _From, State = #state{ws_pid = WsPid, bonus_credits = Bonus}) ->
     if Bonus > 0 ->
         N = rand:uniform(Bonus),

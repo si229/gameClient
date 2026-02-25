@@ -147,3 +147,20 @@
 -record(leave_room_resp, {
     code
 }).
+
+-record(roads, {
+    play_type,
+    game_type,
+    data = []
+}
+).
+
+-record(roads_req, {
+
+}).
+
+-record(roads_resp, {
+    data = []            %% [roads]
+}).
+
+
